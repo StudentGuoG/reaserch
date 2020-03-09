@@ -1,0 +1,21 @@
+import csv
+import numpy as np
+
+ifn = r'G:/1h.csv'
+with open(ifn, 'w+', newline='') as c:
+    writer_csv = csv.writer(c)
+    # b = c.name[:-4]
+    # print(b)
+    with open(r"G:/1h.txt", 'r', encoding='utf8')as f:
+# print(f.readlines())
+        raw_list = []
+        for line in f.readlines():
+        # print(line)
+            line_list = line.strip('\n').split()#去掉str左右端的空格并以空格分割成list
+            # print(line_list)
+            raw_list.append(line_list)
+            # writer_csv.writerow(line_list) #writerow是写入单个列表
+        num_index = raw_list.index(['nm', 'Abs'])
+        # print(num_index)
+        upgrade_raw = raw_list[num_index:]
+        writer_csv.writerows(upgrade_raw) #writerows是写入多个列表
